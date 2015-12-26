@@ -2,9 +2,6 @@ package com.jxpress.http;
 
 import java.io.InputStream;
 
-/**
- * Created by lin on 12/26/15.
- */
 public class Request {
 
     private InputStream inputStream;

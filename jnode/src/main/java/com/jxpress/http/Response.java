@@ -2,9 +2,6 @@ package com.jxpress.http;
 
 import java.io.OutputStream;
 
-/**
- * Created by lin on 12/26/15.
- */
 public class Response {
 
     private OutputStream outputStream;
