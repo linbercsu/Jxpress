@@ -1,6 +1,7 @@
 package com.jxpress.http;
 
 import java.io.InputStream;
+import java.io.PushbackInputStream;
 
 public class JRequest {
 
@@ -10,14 +11,19 @@ public class JRequest {
     public static final String DELETE = "delete";
     public static final String PATCH = "patch";
 
-    private InputStream inputStream;
+    private InputStream bodyStream;
+
 
     public JRequest(InputStream inputStream) {
-        this.inputStream = inputStream;
+        parseStream(inputStream);
     }
 
-    public InputStream getInputStream() {
-        return inputStream;
+    public InputStream getBodyStream() {
+        return bodyStream;
+    }
+
+    public void setBodyStream(InputStream bodyStream) {
+        this.bodyStream = bodyStream;
     }
 
     public String method() {
@@ -26,4 +32,10 @@ public class JRequest {
     public String path() {
         throw new RuntimeException();
     }
+
+    private void parseStream(InputStream inputStream) {
+        PushbackInputStream stream = new PushbackInputStream(inputStream);
+        bodyStream = stream;
+    }
+
 }
