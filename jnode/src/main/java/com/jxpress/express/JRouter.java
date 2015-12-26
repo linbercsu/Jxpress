@@ -64,12 +64,10 @@ public class JRouter implements JMiddleWare {
                 JMiddleWare middleWare = routerPoint.middleWare;
                 if (middleWare instanceof JRouter) {
                     ((JRouter) middleWare).path = path + InterceptPath(subPath, routerPoint.path);
-                }
-
-                middleWare.call(request, response);
-
-                if (response.completed()) {
+                    middleWare.call(request, response);
                     break;
+                }else {
+                    middleWare.call(request, response);
                 }
             }
         }
