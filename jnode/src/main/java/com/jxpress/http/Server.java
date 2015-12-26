@@ -59,7 +59,7 @@ public class Server {
                                     OutputStream outputStream = null;
                                     try {
                                         outputStream = finalAccept.getOutputStream();
-                                        Response response = new Response();
+                                        Response response = new Response(outputStream);
                                         Request request = new Request(inputStream);
 
                                         onRequest(request, response);
