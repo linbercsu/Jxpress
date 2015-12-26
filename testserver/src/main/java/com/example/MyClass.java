@@ -1,20 +1,20 @@
 package com.example;
 
-import com.jxpress.express.Express;
-import com.jxpress.http.Function;
-import com.jxpress.http.Server;
-import com.jxpress.http.Request;
-import com.jxpress.http.Response;
+import com.jxpress.express.JExpress;
+import com.jxpress.http.JMiddleWare;
+import com.jxpress.http.JServer;
+import com.jxpress.http.JRequest;
+import com.jxpress.http.JResponse;
 
 public class MyClass {
     public static void main(String[] args) {
 
-        Express express = new Express();
-        Server server = Server.createServer(express);
+        JExpress express = new JExpress();
+        JServer server = JServer.createServer(express);
 
-        express.use(new Function() {
+        express.use(new JMiddleWare() {
             @Override
-            public void call(Request request, Response response) {
+            public void call(JRequest request, JResponse response) {
                 System.out.println("request got.");
             }
         });

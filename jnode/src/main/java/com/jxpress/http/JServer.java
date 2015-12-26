@@ -10,9 +10,9 @@ import java.net.Socket;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Server {
+public class JServer {
 
-    private Function function;
+    private JMiddleWare middleWare;
     private ServerSocket myServerSocket;
     private Thread myThread;
     private Set<Socket> openConnections = new HashSet<>();
@@ -36,8 +36,8 @@ public class Server {
         }
     }
 
-    public static Server createServer(Function function) {
-        return new Server(function);
+    public static JServer createServer(JMiddleWare middleWare) {
+        return new JServer(middleWare);
     }
 
     public void listen(int port) throws IOException {
@@ -59,8 +59,8 @@ public class Server {
                                     OutputStream outputStream = null;
                                     try {
                                         outputStream = finalAccept.getOutputStream();
-                                        Response response = new Response(outputStream);
-                                        Request request = new Request(inputStream);
+                                        JResponse response = new JResponse(outputStream);
+                                        JRequest request = new JRequest(inputStream);
 
                                         onRequest(request, response);
 //                                        TempFileManager tempFileManager = tempFileManagerFactory.create();
@@ -152,11 +152,11 @@ public class Server {
         }
     }
 
-    private Server(Function function) {
-        this.function = function;
+    private JServer(JMiddleWare middleWare) {
+        this.middleWare = middleWare;
     }
 
-    private void onRequest(Request request, Response response) {
-        function.call(request, response);
+    private void onRequest(JRequest request, JResponse response) {
+        middleWare.call(request, response);
     }
 }

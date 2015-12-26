@@ -2,11 +2,11 @@ package com.jxpress.http;
 
 import java.io.InputStream;
 
-public class Request {
+public class JRequest {
 
     private InputStream inputStream;
 
-    public Request(InputStream inputStream) {
+    public JRequest(InputStream inputStream) {
         this.inputStream = inputStream;
     }
 

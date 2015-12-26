@@ -2,11 +2,11 @@ package com.jxpress.http;
 
 import java.io.OutputStream;
 
-public class Response {
+public class JResponse {
 
     private OutputStream outputStream;
 
-    public Response(OutputStream outputStream) {
+    public JResponse(OutputStream outputStream) {
         this.outputStream = outputStream;
     }
 
